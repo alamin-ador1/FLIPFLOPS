@@ -1,0 +1,13 @@
+module dff_tb;
+reg D,CLK,RST;
+wire Q;
+dff uut(Q,D,RST,CLK);
+initial
+begin
+CLK=0;D=0;RST=0;
+#20 RST=~RST;
+#200  $finish;
+end
+always #20 CLK=~CLK;
+always #40 D=~D;
+endmodule
