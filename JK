@@ -1,0 +1,17 @@
+module JK_FF (Q, J, K, CLK, RST);
+  output reg Q;       
+  input J, K, CLK, RST;
+
+  always @(posedge CLK or negedge RST) begin
+    if (RST == 0)
+      Q = 0;             // Asynchronous reset
+    else if (J == 0 && K == 0)
+      Q = Q;             // No change
+    else if (J == 0 && K == 1)
+      Q = 0;             // Reset to 0
+    else if (J == 1 && K == 0)
+      Q = 1;             // Set to 1
+    else
+      Q = ~Q;            // Toggle
+  end
+endmodule
