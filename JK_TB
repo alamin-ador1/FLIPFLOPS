@@ -1,0 +1,19 @@
+module JKFF_TB;
+  reg J, K, RST, CLK;
+  wire Q;
+
+  JK_FF m0 (Q, J, K, CLK, RST);
+
+  initial begin
+    J = 0;
+    K = 0;
+    CLK = 0;
+    RST = 0;
+    #20 RST = 1;
+    #400 $finish;
+  end
+
+  always #20 CLK = ~CLK;
+  always #40 J = ~J;
+  always #60 K = ~K;
+endmodule
