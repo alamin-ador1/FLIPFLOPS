@@ -1,0 +1,13 @@
+module T_FF(
+output reg Q,
+input T,CLK,RST);
+
+always@(posedge CLK or negedge RST) begin
+if(RST == 0)
+Q=0;
+else if(T==1)   //If T is 1,toggle Q
+Q=~Q;
+else
+Q=Q;            //If T is 0,no change in Q
+end
+endmodule
